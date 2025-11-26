@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GlobalDrive AI - International Licensing Assistant</title>
+    <meta name="description" content="AI-powered guide for international driving permits (IDP) and license exchange agreements. Check requirements for 195+ countries instantly.">
+    <meta property="og:title" content="GlobalDrive AI: Drive Anywhere">
+    <meta property="og:description" content="Moving or traveling abroad? Check if you need an IDP or can exchange your license instantly with AI.">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#4F46E5">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #cbd5e1; 
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8; 
+      }
+      
+      /* Print Styles for PDF Export */
+      @media print {
+        body * {
+          visibility: hidden;
+        }
+        #printable-result, #printable-result * {
+          visibility: visible;
+        }
+        #printable-result {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          background: white;
+          padding: 20px;
+          border: none;
+          box-shadow: none;
+        }
+        /* Hide buttons inside the result when printing */
+        .no-print {
+          display: none !important;
+        }
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-markdown": "https://aistudiocdn.com/react-markdown@^10.1.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react-simple-maps": "https://esm.sh/react-simple-maps?external=react,react-dom",
+    "d3-scale": "https://esm.sh/d3-scale",
+    "d3-geo": "https://esm.sh/d3-geo",
+    "topojson-client": "https://esm.sh/topojson-client"
+  }
+}
+</script>
+</head>
+  <body class="bg-slate-50 text-slate-900 antialiased">
+    <div id="root"></div>
+  </body>
+</html>

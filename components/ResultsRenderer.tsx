@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { SearchResult } from '../types';
-import { ExternalLink, BookOpen, Globe, Printer, Copy, Check } from 'lucide-react';
+import { ExternalLink, BookOpen, Globe, Printer, Copy, Check, Share2 } from 'lucide-react';
 
 interface ResultsRendererProps {
   result: SearchResult;
@@ -26,6 +26,23 @@ const ResultsRenderer: React.FC<ResultsRendererProps> = ({ result, origin, desti
     }
   };
 
+  const handleShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: `Driving Guide: ${origin} to ${destination}`,
+          text: `Check out this driving guide for traveling from ${origin} to ${destination}.`,
+          url: window.location.href,
+        });
+      } catch (error) {
+        console.log('Error sharing:', error);
+      }
+    } else {
+      // Fallback to copy if share API not supported
+      handleCopy();
+    }
+  };
+
   return (
     <div id="printable-result" className="animate-fade-in-up relative">
       
@@ -37,14 +54,23 @@ const ResultsRenderer: React.FC<ResultsRendererProps> = ({ result, origin, desti
       </div>
 
       {/* Action Bar */}
-      <div className="flex justify-end mb-4 gap-2 no-print">
+      <div className="flex flex-wrap justify-end mb-4 gap-2 no-print">
+        <button 
+          onClick={handleShare}
+          className="flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-indigo-600 bg-slate-50 hover:bg-white border border-slate-200 px-3 py-1.5 rounded-lg transition-all"
+          title="Share Guide"
+        >
+          <Share2 size={16} />
+          <span className="hidden sm:inline">Share</span>
+        </button>
+
         <button 
           onClick={handleCopy}
           className="flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-indigo-600 bg-slate-50 hover:bg-white border border-slate-200 px-3 py-1.5 rounded-lg transition-all"
           title="Copy Report to Clipboard"
         >
           {copied ? <Check size={16} className="text-green-500" /> : <Copy size={16} />}
-          <span className="hidden sm:inline">{copied ? 'Copied!' : 'Copy Text'}</span>
+          <span className="hidden sm:inline">{copied ? 'Copied!' : 'Copy'}</span>
         </button>
 
         <button 
@@ -53,18 +79,22 @@ const ResultsRenderer: React.FC<ResultsRendererProps> = ({ result, origin, desti
           title="Print or Save as PDF"
         >
           <Printer size={16} />
-          <span className="hidden sm:inline">Print / Save PDF</span>
+          <span className="hidden sm:inline">Print / PDF</span>
         </button>
       </div>
 
       {/* Main Content */}
-      <div className="prose prose-slate max-w-none prose-headings:text-slate-800 prose-p:text-slate-600 prose-li:text-slate-600 prose-strong:text-indigo-700">
+      <div className="prose prose-slate max-w-none prose-headings:text-slate-800 prose-p:text-slate-600 prose-li:text-slate-600 prose-strong:text-indigo-700 prose-table:border-collapse prose-td:border prose-td:border-slate-200 prose-td:p-2 prose-th:bg-slate-50 prose-th:p-2 prose-th:border prose-th:border-slate-200">
         <ReactMarkdown
             components={{
                 h1: ({node, ...props}) => <h1 className="text-2xl font-bold text-slate-800 mb-4 border-b pb-2" {...props} />,
-                h2: ({node, ...props}) => <h2 className="text-xl font-semibold text-slate-800 mt-6 mb-3 flex items-center gap-2" {...props} />,
+                h2: ({node, ...props}) => <h2 className="text-xl font-semibold text-slate-800 mt-8 mb-3 flex items-center gap-2" {...props} />,
                 li: ({node, ...props}) => <li className="my-1" {...props} />,
-                ul: ({node, ...props}) => <ul className="list-disc list-outside ml-5 mb-4" {...props} />
+                ul: ({node, ...props}) => <ul className="list-disc list-outside ml-5 mb-4" {...props} />,
+                table: ({node, ...props}) => <div className="overflow-x-auto my-6 rounded-lg border border-slate-200"><table className="w-full text-sm text-left" {...props} /></div>,
+                blockquote: ({node, ...props}) => (
+                  <blockquote className="border-l-4 border-indigo-400 bg-indigo-50 pl-4 py-2 italic text-slate-700 rounded-r-lg my-4" {...props} />
+                )
             }}
         >
             {result.markdown}

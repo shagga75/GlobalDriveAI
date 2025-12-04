@@ -1,7 +1,6 @@
 import React, { useState, memo } from 'react';
 import { ComposableMap, Geographies, Geography, ZoomableGroup } from 'react-simple-maps';
 import { COUNTRIES } from '../constants';
-import { Loader2, Maximize, Minimize } from 'lucide-react';
 
 const geoUrl = "https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries.json";
 

@@ -33,8 +33,8 @@ export const fetchDrivingRegulations = async (
       3. **Driving Side**: Clearly state if they drive on the **LEFT** or **RIGHT** side of the road.
       4. **Validity**: How long can I drive with my foreign license?
       5. **Emergency Numbers**: List the main emergency numbers (Police, Ambulance) for ${destCountry}.
-      6. **How to Obtain IDP**: If needed, briefly explain where to get it in ${originCountry}.
-      7. **Important Note**: Any specific driving culture warnings or strict laws.
+      6. **Essential Vocabulary**: Create a Markdown Table with 5 key driving words in the local language of ${destCountry} (e.g., Exit, Toll, Danger, One Way) and their English translation.
+      7. **Pro Tip**: One specific, non-obvious advice for driving in ${destCountry} (e.g., specific right-of-way rules, flashes, or fines).
       
       Use Google Search to ensure the information is current.
     `;
@@ -52,7 +52,8 @@ export const fetchDrivingRegulations = async (
       3. **Driving Side**: Clearly state if they drive on the **LEFT** or **RIGHT** side of the road.
       4. **Requirements**: What documents are needed? (e.g., Translation, Certificate of Authenticity, Medical check).
       5. **Deadlines**: Is there a specific timeframe after arrival when I MUST exchange it?
-      6. **Alternatives**: If no agreement exists, what is the process to get a local license?
+      6. **Essential Vocabulary**: Create a Markdown Table with 5 key driving words in the local language of ${destCountry} (e.g., License, Insurance, Penalty) and their English translation.
+      7. **Alternatives**: If no agreement exists, what is the process to get a local license?
       
       Use Google Search to verify the latest treaties or transport ministry guidelines.
     `;

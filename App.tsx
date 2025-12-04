@@ -13,6 +13,7 @@ const App: React.FC = () => {
   const [destination, setDestination] = useState<string>('');
   const [searchType, setSearchType] = useState<SearchType>('TOURIST');
   const [loading, setLoading] = useState<boolean>(false);
+  const [loadingMessage, setLoadingMessage] = useState<string>('Analyzing Regulations...');
   const [result, setResult] = useState<SearchResult | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [mapMode, setMapMode] = useState<'origin' | 'destination'>('origin');
@@ -27,6 +28,27 @@ const App: React.FC = () => {
       setHasAcceptedTerms(true);
     }
   }, []);
+
+  // Rotating loading messages
+  useEffect(() => {
+    let interval: ReturnType<typeof setInterval>;
+    if (loading) {
+      const messages = [
+        "Consulting international databases...",
+        "Checking reciprocal agreements...",
+        "Translating local traffic laws...",
+        "Verifying IDP requirements...",
+        "Finalizing your report..."
+      ];
+      let i = 0;
+      setLoadingMessage(messages[0]);
+      interval = setInterval(() => {
+        i = (i + 1) % messages.length;
+        setLoadingMessage(messages[i]);
+      }, 1500);
+    }
+    return () => clearInterval(interval);
+  }, [loading]);
 
   const handleAcceptTerms = () => {
     setHasAcceptedTerms(true);
@@ -212,7 +234,7 @@ const App: React.FC = () => {
                         className="w-full bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-xl font-bold shadow-lg shadow-indigo-200 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 mt-4"
                     >
                         {loading ? <Loader2 className="animate-spin" size={20} /> : <Search size={20} />}
-                        {loading ? 'Analyzing Regulations...' : 'Check Requirements'}
+                        {loading ? 'Processing...' : 'Check Requirements'}
                     </button>
                 </div>
             </div>
@@ -234,9 +256,9 @@ const App: React.FC = () => {
 
               {loading && (
                 <div className="flex flex-col items-center justify-center h-full py-12 text-slate-400">
-                  <Loader2 size={48} className="animate-spin text-indigo-500 mb-4" />
-                  <p className="text-lg font-medium text-slate-600">Consulting international databases...</p>
-                  <p className="text-sm">This uses live Google Search grounding for accuracy.</p>
+                  <Loader2 size={48} className="animate-spin text-indigo-500 mb-6" />
+                  <p className="text-xl font-semibold text-slate-700 animate-pulse">{loadingMessage}</p>
+                  <p className="text-sm mt-2 text-slate-500">Connecting to Gemini AI & Google Search Grounding...</p>
                 </div>
               )}
 

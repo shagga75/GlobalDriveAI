@@ -4,14 +4,12 @@
 
 Powered by **Google Gemini 2.5** and **Google Search Grounding**, it provides real-time, verified information about International Driving Permits (IDP) and Reciprocal License Exchange Agreements for 195+ countries.
 
-![GlobalDrive AI Screenshot](https://via.placeholder.com/1200x630/4F46E5/FFFFFF?text=GlobalDrive+AI+Interface)
-
 ## 🚀 Features
 
 - **🤖 AI-Powered Analysis**: Uses Gemini 2.5 Flash to analyze complex cross-border regulations.
 - **🌐 Real-Time Grounding**: Validates data using Google Search to ensure up-to-date info on laws and treaties.
 - **🗺️ Interactive World Map**: Select origin and destination countries visually.
-- **📄 PDF Reports**: Generate print-ready guides with emergency numbers and driving sides.
+- **📄 PDF Reports & Sharing**: Generate print-ready guides or share natively via mobile.
 - **🛡️ Legal Compliance**: Built-in disclaimer modal and user acceptance flow.
 - **⚡ Modern Tech Stack**: Built with React 19, Tailwind CSS, and TypeScript.
 
@@ -28,8 +26,9 @@ Powered by **Google Gemini 2.5** and **Google Search Grounding**, it provides re
    npm install
    ```
 
-3. **Configure Environment**
-   Create a `.env` file in the root directory and add your Google Gemini API Key:
+3. **Configure Environment (Crucial!)**
+   Create a `.env` file in the root directory and add your Google Gemini API Key. 
+   **Note:** Never commit this file to GitHub.
    ```env
    API_KEY=your_google_genai_api_key_here
    ```
@@ -44,7 +43,6 @@ Powered by **Google Gemini 2.5** and **Google Search Grounding**, it provides re
 - **Frontend**: React 19, TypeScript, Tailwind CSS
 - **AI Integration**: Google GenAI SDK (`gemini-2.5-flash`)
 - **Visuals**: React Simple Maps, Lucide React
-- **Build Tool**: Vite / Parcel (depending on your setup)
 
 ## 🤝 Contributing
 
@@ -58,7 +56,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## 📄 License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+Distributed under the MIT License.
 
 ---
 

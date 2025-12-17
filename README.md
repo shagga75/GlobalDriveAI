@@ -22,8 +22,9 @@ Powered by **Google Gemini 2.5** and **Google Search Grounding**, it provides re
    ```
 
 2. **Install dependencies**
+   Debido a que usamos React 19, es posible que algunas librerías de mapas requieran el flag de dependencias antiguas:
    ```bash
-   npm install
+   npm install --legacy-peer-deps
    ```
 
 3. **Configure Environment (Crucial!)**
@@ -44,15 +45,9 @@ Powered by **Google Gemini 2.5** and **Google Search Grounding**, it provides re
 - **AI Integration**: Google GenAI SDK (`gemini-2.5-flash`)
 - **Visuals**: React Simple Maps, Lucide React
 
-## 🤝 Contributing
+## 📦 Deployment (Vercel/Netlify)
 
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the project
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+The project includes a `.npmrc` file configured with `legacy-peer-deps=true` to ensure the build succeeds in CI/CD environments despite React 19 peer dependency warnings from older libraries.
 
 ## 📄 License
 

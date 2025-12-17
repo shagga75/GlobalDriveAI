@@ -15,7 +15,7 @@ export const fetchDrivingRegulations = async (
   type: 'TOURIST' | 'RESIDENT'
 ): Promise<SearchResult> => {
   
-  const modelId = 'gemini-2.5-flash';
+  const modelId = 'gemini-3-flash-preview';
   
   let prompt = "";
 

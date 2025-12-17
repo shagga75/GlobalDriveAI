@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@google/genai": "^1.30.0",
-    "lucide-react": "^0.468.0",
+    "lucide-react": "^0.554.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-markdown": "^10.1.0",
@@ -12,6 +12,10 @@
     "d3-scale": "^4.0.2",
     "d3-geo": "^3.1.1",
     "topojson-client": "^3.1.0"
+  },
+  "overrides": {
+    "react": "$react",
+    "react-dom": "$react-dom"
   },
   "devDependencies": {
     "@types/react": "^19.0.0",
